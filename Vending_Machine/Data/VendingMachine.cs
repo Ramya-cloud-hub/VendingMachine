@@ -46,17 +46,7 @@ namespace VendingMachineController.Data
 
             return isValid;
         }
-        //Implimentation to display all the items with prices
-        public void Examine(List<Products> listOfProducts)
-        {
-            Console.WriteLine("----You are Welcome to buy below list of items-----\n ");
-            Console.WriteLine("****************************");
-            Console.WriteLine("* " + listOfProducts[0] + "= 100Kr/pc   *\n");
-            Console.WriteLine("* " + listOfProducts[1] + "= 100Kr/pc   *\n");
-            Console.WriteLine("* " + listOfProducts[2] + "= 100Kr/pc   *\n");
-            Console.WriteLine("****************************");
-            Console.WriteLine("Please make your selection");
-        }
+
 
         //Implimentation of EndTransaction functiom
         public double EndTransaction(int userInputMoney, int noOfProduct)
@@ -82,7 +72,5 @@ namespace VendingMachineController.Data
 
             return messeage;
         }
-
-
     }
 }
