@@ -19,9 +19,11 @@ namespace VendingMachineController.Model
                 {
                     bool isvalidMoney = false;
                     bool isTrue = true;
+                    bool isSufficient = true;
                     int userReInsertMoney;
                     double remaingBalance;
                     string messeage;
+                    int total;
 
                     VendingMachine machineObject = new VendingMachine();
                     Program p = new Program();
@@ -67,6 +69,30 @@ namespace VendingMachineController.Model
                     string userChoice = Console.ReadLine().ToUpper();
                     Console.WriteLine("Please enter how many you want to buy");
                     int noOfProducts = int.Parse(Console.ReadLine());
+                    total = noOfProducts * 100;
+                      
+                    if(total > userMoney)
+                    {
+                        while (isSufficient) {
+                            Console.WriteLine("Your inserted Money is not sufficient to buy the items please insert more money");
+                            int oldMoney = userMoney;
+                            userMoney = int.Parse(Console.ReadLine());                           
+                            isvalidMoney = machineObject.InsertMoney(userMoney);
+                            userMoney += oldMoney;
+                            if (isvalidMoney)
+                            {
+                                isSufficient = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your input money is not valid \n Please inset your money in a fixed denominations 1kr, 5kr,10kr,20kr,50kr,100kr,1000kr");
+                                userMoney = int.Parse(Console.ReadLine());
+                                isvalidMoney = machineObject.InsertMoney(userMoney);
+                                isSufficient = true;
+                            }
+                        }
+
+                    }
 
                     //Calling MakeBuyerSelection function choose wich item to buy
                     p.MakeBuySelection(userChoice, userMoney);
