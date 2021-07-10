@@ -104,10 +104,12 @@ namespace VendingMachineController.Model
                     //Calling use method
                     messeage = machineObject.Use(userChoice);
                     Console.WriteLine(messeage);
+                    
 
                     Console.WriteLine("Would you like to order again?\n enter Yes to order again else enter No to exit ");
-
+                   
                 } while (Console.ReadLine().ToUpper()=="YES");
+                Console.Clear();
                 Console.WriteLine("Press any key to exit.");
             }
             catch (ArgumentNullException)
